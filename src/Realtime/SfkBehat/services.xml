@@ -3,7 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="realtime.sfkBehat" class="Realtime\SfkBehat\Initializer">
+        <service id="realtime.sfkBehat" class="Realtime\SfkBehat\Sfk">
+        </service>
+
+        <service id="realtime.sfkBehat.initializer" class="Realtime\SfkBehat\Initializer">
+            <argument type="service" id="realtime.sfkBehat" />
             <tag name="behat.context.initializer" />
         </service>
     </services>
