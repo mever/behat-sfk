@@ -2,8 +2,6 @@
 
 namespace Realtime\SfkBehat;
 
-use Realtime\SfkBehat\Command\FtpserveCommand;
-
 class Sfk
 {
     private $runDirectory;
@@ -23,7 +21,7 @@ class Sfk
     {
         switch ($command) {
             case 'ftpserv':
-                return new FtpserveCommand($this);
+                return new Command\FtpservCommand($this);
 
             default:
                 $state = new ExitState();
