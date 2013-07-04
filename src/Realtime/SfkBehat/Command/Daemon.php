@@ -20,6 +20,11 @@ abstract class Daemon implements RunStateInterface
      */
     protected $sfk;
 
+    /**
+     * Private working directory for the daemon.
+     *
+     * @var string
+     */
     private $workDir;
 
     /**
@@ -71,7 +76,7 @@ abstract class Daemon implements RunStateInterface
     }
 
     /**
-     * Cleanup daemon runtime.
+     * Cleanup daemon work directory.
      */
     public function cleanup()
     {

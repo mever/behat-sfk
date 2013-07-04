@@ -25,6 +25,10 @@ class FtpservCommand extends Daemon
                 case 'password':
                     $args[] = '-pw=' . $value;
                     break;
+
+                case 'pasv_ip':
+                    $args[] = '-ownip=' . $value;
+                    break;
             }
         }
 
