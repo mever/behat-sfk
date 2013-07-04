@@ -2,7 +2,8 @@
 
 namespace Realtime\SfkBehat;
 
-use Behat\Behat\Context\BehatContext;
+use Behat\Behat\Context\BehatContext,
+    Behat\Gherkin\Node\PyStringNode;
 
 class Context extends BehatContext
 {
@@ -12,11 +13,21 @@ class Context extends BehatContext
     public $sfkService;
 
     /**
-     * @Given /^an local FTP server running on port "([^"]*)"$/
+     * @Given /^a local FTP server running on port "([^"]*)" with these options(:| \'([^\']*)\')$/
      */
-    public function anLocalFtpServerRunningOnPort($port)
+    public function aLocalFtpServerRunningOnPort($port, $_, $rawOptions)
     {
+        $options = json_decode(($rawOptions instanceof PyStringNode) ? $rawOptions->getRaw() : $rawOptions, true);
+
         $ftpServer = $this->sfkService->run('ftpserv');
-        $ftpServer->listen($port);
+        $ftpServer->listen($port, $options);
+    }
+
+    /**
+     * @AfterScenario
+     */
+    public function cleanup()
+    {
+        $this->sfkService->cleanup();
     }
 }
