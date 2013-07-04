@@ -30,4 +30,14 @@ class FtpservCommand extends Daemon
 
         $this->start($args);
     }
+
+    /**
+     * Return FTP root directory.
+     *
+     * @return string
+     */
+    public function getRootDir()
+    {
+        return $this->getWorkDir();
+    }
 }
