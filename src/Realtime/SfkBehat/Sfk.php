@@ -74,7 +74,7 @@ class Sfk
      */
     public function getProgramPath()
     {
-        return __DIR__ . '/../../../sfk';
+        return trim(`which sfk`);
     }
 
     /**
